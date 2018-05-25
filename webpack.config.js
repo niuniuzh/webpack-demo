@@ -9,15 +9,19 @@ module.exports = {
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
-        filename: 'js/[name]-[chunkhash].js'
+        filename: 'js/[name]-[chunkhash].js',
+        publicPath:'http://www.test.cn'
     },
     plugins: [
         new htmlWebpackPlugin({
             template: 'index.html',
             filename: 'index.html',
-            inject: 'head',
             title:'webpack is awesome',
-            test:'dskgjskdljfslkdflk,hahaha'
+            test:'dskgjskdljfslkdflk,hahaha',
+            minify:{
+                removeComments:true,
+                collapseWhitespace:true
+            }
         })
     ]
 };
