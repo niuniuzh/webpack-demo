@@ -19,22 +19,22 @@ module.exports = {
             template: 'index.html',
             filename: 'a.html',
             title: 'this is a.html',
-            inject: 'body',
-            chunks: ['a', 'main']
+            inject: false,
+            excludeChunks: ['b', 'c']
         }),
         new htmlWebpackPlugin({
             template: 'index.html',
             filename: 'b.html',
             title: 'this is b.html',
-            inject: 'body',
-            chunks: ['b']
+            inject: false,
+            chunks: ['main', 'b']
         }),
         new htmlWebpackPlugin({
             template: 'index.html',
             filename: 'c.html',
             title: 'this is c.html',
-            inject: 'body',
-            chunks: ['c']
+            inject: false,
+            chunks: ['main', 'c']
         })
     ]
 };

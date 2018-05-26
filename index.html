@@ -6,10 +6,16 @@
     <title>
         <%= htmlWebpackPlugin.options.title%>
     </title>
+    <%= compilation.assets[htmlWebpackPlugin.files.chunks.main.entry.substr(htmlWebpackPlugin.files.publicPath.length)].source()%>
 </head>
 
 <body>
     <!-- 哈哈，我是注释 -->
+    <% for ( var k in htmlWebpackPlugin.files.chunks) {%>
+        <% if (k !== 'main') {%>
+            <script type="text/javascript" src="<%= htmlWebpackPlugin.files.chunks[k].entry %>"></script>
+        <% } %>
+    <% } %>
 </body>
 
 </html>
