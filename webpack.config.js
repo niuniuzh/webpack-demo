@@ -5,23 +5,36 @@ module.exports = {
     mode: 'development',
     entry: {
         main: './src/script/main.js',
-        a: './src/script/a.js'
+        a: './src/script/a.js',
+        b: './src/script/b.js',
+        c: './src/script/c.js',
     },
     output: {
         path: path.resolve(__dirname, 'dist'),
         filename: 'js/[name]-[chunkhash].js',
-        publicPath:'http://www.test.cn'
+        publicPath: 'http://www.test.cn'
     },
     plugins: [
         new htmlWebpackPlugin({
             template: 'index.html',
-            filename: 'index.html',
-            title:'webpack is awesome',
-            test:'dskgjskdljfslkdflk,hahaha',
-            minify:{
-                removeComments:true,
-                collapseWhitespace:true
-            }
+            filename: 'a.html',
+            title: 'this is a.html',
+            inject: 'body',
+            chunks: ['a', 'main']
+        }),
+        new htmlWebpackPlugin({
+            template: 'index.html',
+            filename: 'b.html',
+            title: 'this is b.html',
+            inject: 'body',
+            chunks: ['b']
+        }),
+        new htmlWebpackPlugin({
+            template: 'index.html',
+            filename: 'c.html',
+            title: 'this is c.html',
+            inject: 'body',
+            chunks: ['c']
         })
     ]
 };
