@@ -20,6 +20,19 @@ module.exports = {
                         presets: ['env']
                     }
                 }
+            },
+            {
+                test: /\.html$/,
+                use: {
+                    loader: 'html-loader',
+                }
+            },
+            {
+                test: /\.css$/,
+                use: [
+                    { loader: "style-loader" },
+                    { loader: "css-loader" }
+                ]
             }
         ]
     },
@@ -27,7 +40,8 @@ module.exports = {
         new htmlWebpackPlugin({
             filename: 'index.html',
             template: 'index.html',
-            inject: 'body'
+            inject: 'body',
+            title: 'this is a test'
         })
     ]
 };
