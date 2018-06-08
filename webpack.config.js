@@ -12,8 +12,6 @@ module.exports = {
         rules: [
             {
                 test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                include: /(src)/,
                 use: {
                     loader: 'babel-loader',
                     options: {
@@ -23,6 +21,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
+                exclude: path.resolve(__dirname,'index.html'),
                 use: {
                     loader: 'html-loader',
                 }
@@ -41,7 +40,7 @@ module.exports = {
             filename: 'index.html',
             template: 'index.html',
             inject: 'body',
-            title: 'this is a test'
+            title: 'web app test'
         })
     ]
 };
