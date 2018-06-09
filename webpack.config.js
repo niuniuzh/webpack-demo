@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                exclude: path.resolve(__dirname,'index.html'),
+                exclude: path.resolve(__dirname, 'index.html'),
                 use: {
                     loader: 'html-loader',
                 }
@@ -30,7 +30,23 @@ module.exports = {
                 test: /\.css$/,
                 use: [
                     { loader: "style-loader" },
-                    { loader: "css-loader" }
+                    {
+                        loader: "css-loader",
+                        options: {
+                            importLoaders: 1
+                        }
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            ident: 'postcss',
+                            plugins: (loader) => [
+                                // require('postcss-import')({ root: loader.resourcePath }),
+                                // require('postcss-cssnext')(),
+                                require('autoprefixer')({ browsers: ['last 5 versions'] })
+                            ]
+                        }
+                    }
                 ]
             }
         ]
