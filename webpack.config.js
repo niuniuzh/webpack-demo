@@ -48,6 +48,25 @@ module.exports = {
                         }
                     }
                 ]
+            },
+            {
+                test: /\.scss$/,
+                use: [
+                    { loader: "style-loader" },
+                    {
+                        loader: "css-loader",
+                    },
+                    {
+                        loader: "postcss-loader",
+                        options: {
+                            ident: 'postcss',
+                            plugins: (loader) => [
+                                require('autoprefixer')({ browsers: ['last 5 versions'] })
+                            ]
+                        }
+                    },
+                    { loader: "less-loader" }
+                ]
             }
         ]
     },
