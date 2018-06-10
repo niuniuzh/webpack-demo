@@ -67,6 +67,14 @@ module.exports = {
                     },
                     { loader: "less-loader" }
                 ]
+            },
+            {
+                test: /\.tpl$/,
+                use: [
+                    {
+                        loader: 'ejs-loader?variable=arr',
+                    }
+                ]
             }
         ]
     },
