@@ -21,7 +21,7 @@ module.exports = {
             },
             {
                 test: /\.html$/,
-                exclude: path.resolve(__dirname, 'index.html'),
+                // exclude: path.resolve(__dirname, 'index.html'),
                 use: {
                     loader: 'html-loader',
                 }
@@ -73,6 +73,14 @@ module.exports = {
                 use: [
                     {
                         loader: 'ejs-loader?variable=arr',
+                    }
+                ]
+            },
+            {
+                test: /\.(png|jpg|gif)$/i,
+                use: [
+                    {
+                        loader: 'file-loader'
                     }
                 ]
             }
